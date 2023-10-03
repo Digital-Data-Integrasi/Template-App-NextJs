@@ -2,7 +2,13 @@ import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 
 export function middleware(request: NextRequest) {
-    let checkauth = true;
+    let checkauth = false;
+    const token = request.cookies.get('accessToken')
+
+    if (token) {
+        checkauth = true;
+    }
+    
     if (checkauth) {
         return NextResponse.next()
     } else {
@@ -12,5 +18,5 @@ export function middleware(request: NextRequest) {
 };
 
 export const config = {
-    matcher:['/framework/:path*']
+    matcher:['/','/framework/:path*']
 }

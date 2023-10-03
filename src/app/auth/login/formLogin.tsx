@@ -19,6 +19,7 @@ import { userLogin } from "@/model/userLogin";
 import { useForm } from "react-hook-form";
 import Link from "next/link";
 import { FaUserAlt, FaLock, FaGoogle } from "react-icons/fa"
+import axios from "axios";
 
 const CFauserAlt = chakra(FaUserAlt);
 const CFaLock = chakra(FaLock);
@@ -46,7 +47,20 @@ const FormLogin = () => {
     });
 
     const submitLogin = (f: userLogin) => {
-        console.log(f)
+        // console.log(f)
+        axios
+            .post('http://localhost:3000/api/auth/login', f,{
+                headers: {
+                    "Content-Type": "application/json"
+                }
+            })
+            .then((res) => {
+                console.log("res", res)
+                document.location = '/framework/dashboard'
+            })
+            .catch((error) => {
+                alert(error.response.data.error)
+            })
     };
     return (
         <>
