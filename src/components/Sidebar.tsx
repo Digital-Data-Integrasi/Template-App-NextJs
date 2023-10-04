@@ -1,5 +1,6 @@
 "use client"
-import { FaChartBar, FaRegSun,FaUserFriends, FaHome } from "react-icons/fa";
+import { FaChartBar, FaRegSun, FaUserFriends, FaHome, FaBell } from "react-icons/fa";
+import { PiGraphFill } from "react-icons/pi"
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 
@@ -21,7 +22,17 @@ const menus: Menu[] = [
     icon: FaUserFriends
   },
   // Add Module
-  // 
+  //
+  {
+    label: "Link Analysis",
+    url: '/framework/link-analysis',
+    icon: PiGraphFill
+  },
+  {
+    label: "Alert",
+    url: '/framework/alert',
+    icon: FaBell
+  },
   {
     label: "Setting",
     url: '/framework/setting',
@@ -33,16 +44,16 @@ const Sidebar = () => {
   const [toggle, setToggle] = useState(true);
   const turnToggle = () => setToggle(!toggle);
   const expandedSidebarStyle = {
-    width: "13%",
-    transition: "width 0.5s ease-in",
+    width: "15%",
+    transition: "width 0.3s ease-in",
   };
   const collapsedSidebarStyle = {
     width: "5%",
-    transition: "width 0.5s ease-in",
+    transition: "width 0.3s ease-out",
   };
   const pathName = usePathname();
   return (
-    <div style={toggle ? expandedSidebarStyle: collapsedSidebarStyle} className="h-full px-3 pb-4 overflow-y-auto bg-slate-900">
+    <div style={toggle ? expandedSidebarStyle : collapsedSidebarStyle} className="h-full px-3 pb-4 overflow-y-auto bg-slate-900">
       <ul className="space-y-2 font-medium">
         <li className=" text-white font-bold text-xl justify-center flex py-5">
           <button onClick={turnToggle}><FaHome /></button>

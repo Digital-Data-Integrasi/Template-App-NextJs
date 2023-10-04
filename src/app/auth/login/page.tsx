@@ -3,6 +3,7 @@ import Image from "next/image";
 import neo4jImage from "../../../../public/Neo4j-logo-color.svg"
 import Footer from "@/components/Footer";
 
+
 export const metadata = {
     title: "Login",
     description: "",

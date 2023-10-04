@@ -10,7 +10,6 @@ import {
     InputLeftElement,
     chakra,
     Text,
-    HStack,
     VStack
 } from "@chakra-ui/react";
 import * as yup from "yup";
@@ -18,8 +17,10 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { userLogin } from "@/model/userLogin";
 import { useForm } from "react-hook-form";
 import Link from "next/link";
-import { FaUserAlt, FaLock, FaGoogle } from "react-icons/fa"
+import { FaUserAlt, FaLock } from "react-icons/fa"
+import {FcGoogle} from "react-icons/fc"
 import axios from "axios";
+
 
 const CFauserAlt = chakra(FaUserAlt);
 const CFaLock = chakra(FaLock);
@@ -46,17 +47,20 @@ const FormLogin = () => {
         resolver: yupResolver(schema)
     });
 
+    // const { setUsername } = useGlobalContext();
+    // const router = useRouter();
     const submitLogin = (f: userLogin) => {
-        // console.log(f)
         axios
-            .post('http://localhost:3000/api/auth/login', f,{
+            .post('http://localhost:3000/api/auth/login', f, {
                 headers: {
                     "Content-Type": "application/json"
                 }
             })
             .then((res) => {
-                console.log("res", res)
+                // console.log(res.data.user)
+                // setUsername(res.data.user)
                 document.location = '/framework/dashboard'
+                // router.push('/framework/dashboard')
             })
             .catch((error) => {
                 alert(error.response.data.error)
@@ -64,7 +68,6 @@ const FormLogin = () => {
     };
     return (
         <>
-
             <Card>
                 <CardBody>
                     <FormControl isInvalid={"email" in errors}>
@@ -88,7 +91,7 @@ const FormLogin = () => {
                     <VStack spacing={2}>
                         <Button bg={'green.400'} color={"white"} w={"100%"} h={10} onClick={handleSubmit(submitLogin)}>Login</Button>
                         <Text className="text-gray-400 font-semibold">OR</Text>
-                        <Button colorScheme="facebook" w={"100%"} h={10} leftIcon={<FaGoogle />}>SignOn</Button>
+                        <Button bg={'white'} variant={'outline'} w={"100%"} h={10} leftIcon={<FcGoogle />}>Sign in with Google</Button>
                     </VStack>
                     <br />
                     <Text className="text-gray-500 text-xs">Doesn't Have an Account?<Link href={'/auth/registration'} className="text-blue-500 hover:underline right-10"> Sign Up</Link></Text>
