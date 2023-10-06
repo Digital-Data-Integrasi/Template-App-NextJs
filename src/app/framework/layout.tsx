@@ -8,7 +8,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
             <HeadBar />
             <div className="flex w-full h-screen">
                 <Sidebar />
-                <div className="right-container p-4 w-[100%]">
+                <div className="right-container p-4 w-[100%] overflow-y-scroll">
                     <Content>{children}</Content>
                 </div>
             </div>

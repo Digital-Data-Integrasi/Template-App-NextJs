@@ -6,7 +6,7 @@ interface Props {
 
 const Content: FC<Props> = ({ children }) => {
     return (
-        <div className="min-h-[600px] max-h-screen">
+        <div className="min-h-max max-h-screen z-0">
             {children}
         </div>
     )

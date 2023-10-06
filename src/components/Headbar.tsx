@@ -21,7 +21,7 @@ const HeadBar = () => {
     };
 
     return (
-        <nav className="sticky top-0 bg-slate-950 flex justify-between items-center h-12 p-4">
+        <nav className="sticky top-0 z-50 bg-slate-950 flex justify-between items-center h-12 p-4">
             <div className="flex items-center">
                 <Image src={logo} alt="logo" className="h-8 w-auto" />
                 <text className="text-white ml-10">Application xxxyyyy</text>
@@ -34,31 +34,30 @@ const HeadBar = () => {
                     data-dropdown-toggle="user-dropdown"
                     data-dropdown-placement="bottom"
                     onClick={toggleDropdown}
-
                 >
                     <text className="text-white ml-3">ddi@gmail.com</text>
                 </button>
                 {isDropdownOpen && (
                     <div
-                        className="absolute bg-gray-900 w-[9%] mt-2 py-2 rounded shadow-lg"
+                        className="absolute bg-gray-900 w-[10%] mt-2 py-2 rounded shadow-lg z-50"
                         data-dropdown-content="user-dropdown"
-                        style={{ top: "100%", right: "5px" }}
+                        style={{ top: "100%", right: "5px"}}
                     >
-                        <ul className="list-none ml-3 mr-3">
+                        <ul className="list-none ml-3 mr-3 z-50">
                             <li>
-                                <a href="/framework/setting/user" className="flex items-center p-2 text-white rounded-lg  hover:bg-green-700 hover:text-white group space-x-1">
+                                <a href="/framework/setting/user" className="flex items-center p-2 text-white rounded-lg  hover:bg-green-700 hover:text-white group space-x-5">
                                     <FaUser />
                                     <h1>Profile</h1>
                                 </a>
                             </li>
                             <li>
-                                <a href="/framework/setting" className="flex items-center p-2 text-white rounded-lg  hover:bg-green-700 hover:text-white group space-x-1">
+                                <a href="/framework/setting" className="flex items-center p-2 text-white rounded-lg  hover:bg-green-700 hover:text-white group space-x-5">
                                     <FaRegSun />
                                     <h1>Settings</h1>
                                 </a>
                             </li>
                             <li>
-                                <a href="/auth/login" className="flex items-center p-2 text-white rounded-lg  hover:bg-green-700 hover:text-white group space-x-1">
+                                <a href="/auth/login" className="flex items-center p-2 text-white rounded-lg  hover:bg-green-700 hover:text-white group space-x-5 ">
                                     <FaSignOutAlt />
                                     <h1>Logout</h1>
                                 </a>
